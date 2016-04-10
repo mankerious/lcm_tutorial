@@ -1,0 +1,34 @@
+/*the action attribute tells the form to submit itself to the url ‘/project’ and the method attribute tells it to use the POST method.*/
+form action="/index" method="POST" align="left"
+
+  .row
+    .col-1of2
+     br
+     br
+     small.thick  Step 1: Create Segments 
+
+    .col-2of2
+     h3 Provision Clients
+     h4 Create Segments
+     small  A segment describes a group of customers that share the same model, reports and ETL.
+     br
+     small Every client in that segment will receive the same model, ETLs & dashboard/reports as the master project.
+     br
+     br
+     small.thick.tabbed Segment Name:&nbsp &nbsp 
+   	 input  id="textinput" name="segment_name"
+     br
+     br
+     small.thick.tabbed Segment Master: &nbsp 
+     select name="projectid" style="margin-left:0px" 
+          - client = GoodData.connect('mustang@gooddata.com', 'jindrisska', server: 'https://mustangs.intgdc.com', verify_ssl: false )
+          - client.projects.each do |project|
+           option value="#{project.pid}" #{project.title} 
+
+     br
+     br
+     hr style="border-top: dotted 1px;"
+  .row
+     button id="search-form" type="submit" Next
+     a href="http://localhost:4567" id="cancel" Cancel 
+
