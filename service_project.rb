@@ -1,4 +1,4 @@
-service_project = @client.create_project(title: 'Service project', auth_token: TOKEN)
+service_project = @client.create_project(title: 'zulu service project', auth_token: TOKEN)
 
 downloader_process = redeploy_or_create_process(service_project, "./scripts/#{VERSION}/service/downloader", name: 'downloader', type: :ruby)
 downloader_schedule = redeploy_or_create_schedule(downloader_process, '0 * * * *', 'main.rb', {
